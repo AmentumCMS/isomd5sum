@@ -2,8 +2,6 @@ name: Windows Build and Release
 
 on:
   push:  # Triggers on all branches
-    tags:
-      - 'v*'
   pull_request:  # Triggers on all branches
   workflow_dispatch:
 
@@ -299,7 +297,7 @@ jobs:
           fi
       
       - name: Create Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v3
         with:
           files: |
             isomd5sum-*.zip
@@ -402,7 +400,7 @@ jobs:
           fi
       
       - name: Create Pre-release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ steps.version.outputs.version }}
           name: "Pre-release ${{ steps.version.outputs.version }}"
